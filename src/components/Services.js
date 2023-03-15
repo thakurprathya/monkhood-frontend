@@ -7,7 +7,7 @@ import service1 from "../assets/service1.png";
 import service2 from "../assets/service2.png";
 
 const Services = () => {
-    const HandleAllClick = ()=>{
+    const HandleClick = ()=>{
         document.getElementById('all-btn').classList.add('selected-btn');
         document.getElementById('all-btn-p').classList.remove('text-[#F69F17]');
         document.querySelector('#all-btn > svg > path').classList.add('arrow-white');
@@ -32,7 +32,7 @@ const Services = () => {
                 <ServiceCard img={<img src={service2} alt="__img"/>} label="Online Listing"/>
             </div>
 
-            <button onClick={HandleAllClick} id='all-btn' className='w-[76px] h-[26px] flex justify-center items-center border rounded-lg border-solid border-[#F69F17]'>
+            <button onClick={HandleClick} id='all-btn' className='w-[76px] h-[26px] flex justify-center items-center border rounded-lg border-solid border-[#F69F17]'>
                 <p id='all-btn-p' className='font-normal text-[10px] leading-[15px] text-[#F69F17] mr-2'>View All </p>
                 <ArrowIcon/>
             </button>
