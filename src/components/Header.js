@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import flat from '../assets/flat.jpg';
-import pg from '../assets/pg.jpg';
+import flat from '../assets/flat.png';
+import pg from '../assets/pg.png';
+import { ReactComponent as MenuIcon } from "../assets/menu.svg";
+import { ReactComponent as LocationIcon } from "../assets/location.svg";
+import { ReactComponent as SearchIcon } from "../assets/search.svg";
 
-import ViewHeadlineOutlinedIcon from '@mui/icons-material/ViewHeadlineOutlined';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-
-const Header = () => {
-    const [page, setPage] = useState('flat');
+const Header = ({page, setPage}) => {
     const [city, setCity] = useState('Delhi');
     const [dropbox, setDropbox] = useState(false);
 
@@ -19,30 +17,40 @@ const Header = () => {
         setPage(event.target.id);
     }
     const HandleCity = (event)=>{
-        setCity(event.target.value);
+        setCity(event.target.id);
         setDropbox(false);
     }
+
+    useEffect(()=>{
+        document.body.classList.add('bg-[#f5f5f5]');
+        document.body.classList.add('font-poppins');
+        //setting url to base url
+        const newEndpoint = "/#";
+        const currentUrl = window.location.href;
+        const newUrl = currentUrl.replace(/\/[^\/]+$/, newEndpoint);
+        window.location.replace(newUrl);
+    },[])
 
     return (
         <div className="h-[286px]">
             <img src={(page==='flat')?flat:pg}/>
-            <div className='h-[286px] absolute inset-0 bg-black bg-opacity-50'>
+            <div className='h-[234px] absolute inset-0 bg-black bg-opacity-50'>
                 <div className='flex justify-between items-center'>
-                    <ViewHeadlineOutlinedIcon sx={{ color:'white', fontSize: 30 }} className="mx-3 cursor-pointer"/>
-                    <button className='mt-3 mx-3 text-xs text-white bg-white px-3 py-1 rounded-full bg-opacity-10 backdrop-filter backdrop-blur-sm shadow'>List Property</button>
+                    <MenuIcon className="mx-5 cursor-pointer"/>
+                    <button className='mt-3 mx-5 text-[9px] text-white bg-white px-3 py-1 rounded-[13px] bg-opacity-20 backdrop-filter backdrop-blur-sm shadow'>List Property</button>
                 </div>
                 <div className='text-center'>
-                    <p className='mt-3 text-white text-2xl'>Find your next student home</p>
-                    <p className='mt-0 text-gray-200 text-sm mb-10'>A broker free student living solution</p>
+                    <p className='mt-3 text-white text-[18px]'>Find your next student home</p>
+                    <p className='mt-0 text-gray-200 text-[10px] mb-8'>A broker free student living solution</p>
                     <div className='mb-1 flex items-center justify-center'>
                         <button id='flat' className='head-btn selected-btn' onClick={HandlePageChange}>Flats</button>
                         <button id='pg' className='head-btn' onClick={HandlePageChange}>PG Homes</button>
                     </div>
-                    <div className='mx-9 flex items-center justify-center rounded-lg bg-white py-4 px-3 bg-opacity-10 backdrop-filter backdrop-blur-sm shadow'>
-                        <div className='border-r-2 border-white border-solid'>
-                            <LocationOnIcon sx={{ color:'orange', fontSize: 22 }}/>
-                            <div className="inline-block mr-3 ml-1 text-white text-sm">
-                                <button onClick={()=>setDropbox(true)}>Delhi</button>
+                    <div className='w-[329px] h-[40px] mx-auto flex items-center justify-start text-[12px] rounded-[4px] bg-white py-4 px-3 bg-opacity-20 backdrop-filter backdrop-blur-sm shadow'>
+                        <div className='flex items-center border-r-2 border-white border-solid'>
+                            <LocationIcon/>
+                            <div className="inline-block mx-3 text-[#FBFAFA]">
+                                <button onClick={()=>setDropbox(true)}>{city}</button>
                                 {dropbox?
                                     <div className="absolute z-1 left-4 w-24 p-2 mt-2 mx-2 bg-white rounded-md shadow-xlg text-left">
                                         <button id='Delhi' className="block p-2 py-1 text-gray-800" onClick={HandleCity}>Delhi</button>
@@ -53,9 +61,9 @@ const Header = () => {
                                 : ""}
                             </div>
                         </div>
-                        <div className='mx-2'>
-                            <SearchOutlinedIcon sx={{ color:'orange', fontSize: 25 }}/>
-                            <input type="text" placeholder='Search by College' className='bg-transparent mx-1 text-white text-sm outline-none placeholder:text-gray-200 placeholder:mx-1'/>
+                        <div className='flex items-center '>
+                            <SearchIcon className='mx-3'/>
+                            <input type="text" placeholder='Search by College' className='w-[165px] bg-transparent text-white outline-none placeholder:text-[#ffffff] placeholder:mx-1'/>
                         </div>
                     </div>
                 </div>

@@ -1,24 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-body{
-    background-color:#f2f2f2;
-    font-family: sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 @layer utilities {
     .nav-comp{
-      @apply flex flex-col items-center mx-[30px] text-gray-500
+      @apply flex flex-col items-center mx-[32px] text-gray-500 text-[10px] font-medium leading-[15px] tracking-normal text-center
     }
-    .selected{
-        @apply text-orange-400
+    .selected-nav-comp{
+        @apply text-[#F69F17]
+    }
+    .nav-home{
+        @apply fill-[#F69F17]
+    }
+    .nav-home-base{
+        @apply fill-gray-500
+    }
+    .nav-other{
+        @apply stroke-[#F69F17]
     }
     .head-btn{
-        @apply px-5 py-2 mx-3 rounded-[7px] text-sm text-orange-400 border-2 border-solid border-orange-400 bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm shadow
+        @apply w-[73px] h-[26px] mx-1 rounded-[4px] text-[11px] text-[#FF9C00] border-2 border-solid border-[#FF9C00] bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm shadow
     }
     .selected-btn{
-        @apply text-white bg-orange-400
+        @apply text-white bg-[#F69F17]
     }
 }
-  
+

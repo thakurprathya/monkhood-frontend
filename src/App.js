@@ -1,11 +1,15 @@
+import { useState } from "react";
+
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 
 function App() {
+    const [page, setPage] = useState('flat');
+
     return (
         <div>
             <Navbar />
-            <Header />
+            <Header page={page} setPage={setPage}/>
         </div>
     );
 }
