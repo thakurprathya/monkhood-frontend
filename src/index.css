@@ -25,5 +25,8 @@
     .selected-btn{
         @apply text-white bg-[#F69F17]
     }
+    .arrow-white{
+        @apply fill-white
+    }
 }
 
