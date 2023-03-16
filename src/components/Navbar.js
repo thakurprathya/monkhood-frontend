@@ -27,9 +27,9 @@ const Navbar = () => {
     }
 
     return (
-        <nav className='bg-[#ffffff] flex p-2 py-3 fixed w-full bottom-0 rounded-[8px_8px_0px_0px] shadow-[0px_-2px_23px_-15px_rgba(0,0,0,0.25)]'>
+        <nav className='bg-[#ffffff] flex p-2 py-3 fixed z-20 w-full bottom-0 rounded-[8px_8px_0px_0px] shadow-[0px_-2px_23px_-15px_rgba(0,0,0,0.25)]'>
             <ul>
-                <a href='#' id='home' className='nav-comp selected-nav-comp' onClick={(event) => HandleOnClick(event)}>
+                <a href='#home' id='home' className='nav-comp selected-nav-comp' onClick={(event) => HandleOnClick(event)}>
                     <HomeIcon/>
                     <p>Home</p>
                 </a>

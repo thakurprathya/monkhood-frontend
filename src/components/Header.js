@@ -33,7 +33,7 @@ const Header = ({page, setPage}) => {
 
     return (
         <div className="h-[286px]">
-            <img src={(page==='flat')?flat:pg}/>
+            <img src={(page==='flat')?flat:pg} alt="head-img"/>
 
             <div className='h-[234px] absolute inset-0 bg-black bg-opacity-50'>
                 <div className='flex justify-between items-center'>
