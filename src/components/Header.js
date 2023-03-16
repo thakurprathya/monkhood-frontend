@@ -29,11 +29,6 @@ const Header = ({page, setPage}) => {
     useEffect(()=>{
         document.body.classList.add('bg-[#f5f5f5]');
         document.body.classList.add('font-poppins');
-        //setting url to base url
-        const newEndpoint = "/#";
-        const currentUrl = window.location.href;
-        const newUrl = currentUrl.replace(/\/[^\/]+$/, newEndpoint);
-        window.location.replace(newUrl);
     },[])
 
     return (
@@ -61,7 +56,7 @@ const Header = ({page, setPage}) => {
                             <div className="inline-block mx-3 text-[#FBFAFA]">
                                 <button onClick={()=>setDropbox(true)}>{city}</button>
                                 {dropbox?
-                                    <div className="absolute z-1 left-4 w-24 p-2 mt-2 mx-2 bg-white rounded-md shadow-xlg text-left">
+                                    <div className="absolute z-10 left-4 w-24 p-2 mt-2 mx-2 bg-white rounded-md shadow-xlg text-left">
                                         <button id='Delhi' className="block p-2 py-1 text-gray-800" onClick={HandleCity}>Delhi</button>
                                         <button id='Mumbai' className="block p-2 py-1 text-gray-800" onClick={HandleCity}>Mumbai</button>
                                         <button id='Hyderabad' className="block p-2 py-1 text-gray-800" onClick={HandleCity}>Hyderabad</button>
@@ -80,7 +75,7 @@ const Header = ({page, setPage}) => {
             </div>
 
             {/* card box */}
-            <div className='flex absolute left-0 top-[210px]'>
+            <div className='flex absolute z-0 left-0 top-[210px]'>
                 <FloatingCard svg={<ResidenceIcon/>} value='450+' label='Residences' />
                 <FloatingCard svg={<CollegeIcon/>} value='120+' label='Colleges' />
                 <FloatingCard svg={<ClientIcon/>} value='200+' label='Happy clients' />

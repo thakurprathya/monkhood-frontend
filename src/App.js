@@ -12,7 +12,7 @@ function App() {
 
     return (
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
             <Header page={page} setPage={setPage} />
             <Services />
             <Features />
