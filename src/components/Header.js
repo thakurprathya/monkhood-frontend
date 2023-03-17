@@ -58,9 +58,9 @@ const Header = ({page, setPage}) => {
                                 
                                 {/* card box shifted here to maintain dropbox overlay */}
                                 <div className='flex absolute z-0 left-0 top-[60px]'>
-                                    <FloatingCard svg={<ResidenceIcon/>} value='450+' label='Residences' />
-                                    <FloatingCard svg={<CollegeIcon/>} value='120+' label='Colleges' />
-                                    <FloatingCard svg={<ClientIcon/>} value='200+' label='Happy clients' />
+                                    <FloatingCard svg={<ResidenceIcon/>} value={450} label='Residences' />
+                                    <FloatingCard svg={<CollegeIcon/>} value={120} label='Colleges' />
+                                    <FloatingCard svg={<ClientIcon/>} value={200} label='Happy clients' />
                                 </div>
 
                                 {dropbox?
