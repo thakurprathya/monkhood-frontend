@@ -33,7 +33,7 @@ const Header = ({page, setPage}) => {
 
     return (
         <div className="h-[286px]">
-            <img src={(page==='flat')?flat:pg} alt="head-img"/>
+            <img src={(page==='flat')?flat:pg} alt="head-img" className='min-w-[100vw] h-[232px]'/>
 
             <div className='h-[234px] absolute inset-0 bg-black bg-opacity-50'>
                 <div className='flex justify-between items-center'>
@@ -50,25 +50,26 @@ const Header = ({page, setPage}) => {
                         <button id='pg' className='head-btn' onClick={HandlePageChange}>PG Homes</button>
                     </div>
 
-                    <div className='w-[329px] h-[40px] mx-auto flex items-center justify-start text-[12px] rounded-[4px] bg-white py-4 px-3 bg-opacity-20 backdrop-filter backdrop-blur-sm shadow'>
+                    <div className='w-[329px] h-[40px] relative mx-auto flex items-center justify-start text-[12px] rounded-[4px] bg-white py-4 px-3 bg-opacity-20 backdrop-filter backdrop-blur-sm shadow'>
                         <div className='flex items-center border-r-2 border-white border-solid'>
                             <LocationIcon/>
                             <div className="inline-block mx-3 text-[#FBFAFA]">
                                 <button onClick={()=>setDropbox(true)}>{city}</button>
                                 
                                 {/* card box shifted here to maintain dropbox overlay */}
-                                <div className='flex absolute z-0 left-0 top-[60px]'>
+                                <div className='flex absolute inset-0 z-10 left-0 top-[60px]'>
                                     <FloatingCard svg={<ResidenceIcon/>} value={450} label='Residences' />
                                     <FloatingCard svg={<CollegeIcon/>} value={120} label='Colleges' />
                                     <FloatingCard svg={<ClientIcon/>} value={200} label='Happy clients' />
                                 </div>
 
                                 {dropbox?
-                                    <div className="absolute z-10 left-4 w-24 p-2 mt-2 mx-2 bg-white rounded-md shadow-xlg text-left">
+                                    <div className="absolute z-20 left-0 w-24 p-2 mt-2 mx-2 bg-white rounded-md shadow-xlg text-left">
                                         <button id='Delhi' className="block p-2 py-1 text-gray-800" onClick={HandleCity}>Delhi</button>
                                         <button id='Mumbai' className="block p-2 py-1 text-gray-800" onClick={HandleCity}>Mumbai</button>
                                         <button id='Hyderabad' className="block p-2 py-1 text-gray-800" onClick={HandleCity}>Hyderabad</button>
                                         <button id='Chennai' className="block p-2 py-1 text-gray-800" onClick={HandleCity}>Chennai</button>
+                                        <button id='Bangalore' className="block p-2 py-1 text-gray-800" onClick={HandleCity}>Bangalore</button>
                                     </div>
                                 : ""}
                             </div>

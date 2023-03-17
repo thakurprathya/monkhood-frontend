@@ -33,7 +33,7 @@ const Testimonial = () => {
             <div className='mt-7 flex items-center'>
                 <div className='w-[40%] mx-8 flex flex-col'>
                     <p className='font-medium text-[15px] leading-[22px]'>What they say</p>
-                    <p className='mt-4 font-normal text-[8px] leading-3 text-[#808385]'>Whether you're looking for a new home or just want to make a little renovations to your existing place, we'll make sure you find what you're looking for.</p>
+                    <p className='mt-4 w-[110px] font-normal text-[8px] leading-3 text-[#808385]'>Whether you're looking for a new home or just want to make a little renovations to your existing place, we'll make sure you find what you're looking for.</p>
                     <GrpIcon className='my-4' />
                     <button onClick={HandleClick} id='read-btn' className='w-[92px] h-[26px] flex justify-center items-center border rounded-[8px] border-solid border-[#F69F17]'>
                         <p id='read-btn-p' className='font-normal text-[10px] leading-[15px] text-[#F69F17] mr-2'>Read More</p>
@@ -67,11 +67,12 @@ const Testimonial = () => {
                 </div>
             </div>
 
-            <div>
-                <img src={advert1} alt="ad__img" className='absolute z-10 top-[1608px] left-[126px] rounded-2' />
-                <img src={advert2} alt="ad__img" className='absolute z-10 top-[1582px] left-[52px] rounded-2' />
-                <img src={advert3} alt="ad__img" className='absolute z-10 top-[1664px] left-[40px] rounded-2'/>
-
+            {/* Advertisment box */}
+            <div className='relative'>
+                <img src={advert1} alt="ad__img" className='absolute z-10 top-[83px] left-[98px] rounded-2' />
+                <img src={advert2} alt="ad__img" className='absolute z-10 top-[60px] left-[22px] rounded-2' />
+                <img src={advert3} alt="ad__img" className='absolute z-10 top-[140px] left-[10px] rounded-2'/>
+        
                 <div className='relative mt-[76px] w-[326px] h-[111px] rounded-[10px] bg-[#1a1a1a]'>
                     <div className='absolute right-5 top-4 w-[134px] flex flex-col'>
                         <div>
