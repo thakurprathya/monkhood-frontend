@@ -28,5 +28,8 @@
     .arrow-white{
         @apply fill-white
     }
+    .selected-fav-btn{
+        @apply stroke-[#F69F17] fill-[#F69F17]
+    }
 }
 

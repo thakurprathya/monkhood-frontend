@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import FloatingCard from './FloatingCard';
 
@@ -25,11 +25,6 @@ const Header = ({page, setPage}) => {
         setCity(event.target.id);
         setDropbox(false);
     }
-
-    useEffect(()=>{
-        document.body.classList.add('bg-[#f5f5f5]');
-        document.body.classList.add('font-poppins');
-    },[])
 
     return (
         <div className="h-[286px]">
