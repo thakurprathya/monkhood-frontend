@@ -16,10 +16,8 @@ function App() {
     const [locAccess, setLocAccess] = useState(false);
 
     useEffect(()=>{
-        setLocAccess(false);
         document.body.classList.add('bg-[#f5f5f5]');
         document.body.classList.add('font-poppins');
-        document.querySelectorAll('*[id*="fav1"] > svg > path').forEach((el) => el.classList.add('stroke-white'));
 
         //asking for user location
         if (navigator.geolocation) {

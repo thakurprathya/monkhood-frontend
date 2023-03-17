@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ReactComponent as FavIcon } from '../assets/saved-small-gray.svg';
+import { ReactComponent as FavIcon } from '../assets/saved-small-white.svg';
 import { ReactComponent as LocationIcon } from '../assets/location-black.svg';
 import { ReactComponent as RatingStar } from '../assets/ratingStar.svg';
 
