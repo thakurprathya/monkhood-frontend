@@ -31,7 +31,7 @@ const Testimonial = () => {
     return (
         <div className='flex flex-col items-center'>
             <div className='mt-7 flex items-center'>
-                <div className='w-[40%] mx-8 sm-350:mx-2 flex flex-col'>
+                <div className='w-[40%] mx-8 sm-360:mx-2 flex flex-col'>
                     <p className='font-medium text-[15px] leading-[22px]'>What they say</p>
                     <p className='mt-4 w-[110px] font-normal text-[8px] leading-3 text-[#808385]'>Whether you're looking for a new home or just want to make a little renovations to your existing place, we'll make sure you find what you're looking for.</p>
                     <GrpIcon className='my-4' />
@@ -41,7 +41,7 @@ const Testimonial = () => {
                     </button>
                 </div>
 
-                <div className='w-[60%] mx-5 sm-350:mx-2 flex flex-col justify-center items-center'>
+                <div className='w-[60%] mx-5 sm-360:mx-2 flex flex-col justify-center items-center'>
                     <div className='p-3 w-[183px] h-[122px] bg-[#fbfafa] shadow-[1.35417px_1.78208px_5.34625px_rgba(0,0,0,0.1),-1.35417px_1.08333px_67.7083px_-10.8333px_rgba(0,0,0,0.05)] rounded-[10px] border-solid border-[#D8D8D8]'>
                         <div className='flex items-center justify-between mb-2'>
                             <div>
@@ -73,8 +73,8 @@ const Testimonial = () => {
                 <img src={advert2} alt="ad__img" className='absolute z-10 top-[60px] left-[22px] rounded-2' />
                 <img src={advert3} alt="ad__img" className='absolute z-10 top-[140px] left-[10px] rounded-2'/>
         
-                <div className='relative mt-[76px] w-[326px] sm-350:w-[315px] h-[111px] rounded-[10px] bg-[#1a1a1a]'>
-                    <div className='absolute right-5 top-4 w-[134px] sm-350:right-1 flex flex-col'>
+                <div className='relative mt-[76px] w-[326px] sm-360:w-[315px] h-[111px] rounded-[10px] bg-[#1a1a1a]'>
+                    <div className='absolute right-5 top-4 w-[134px] sm-360:right-1 flex flex-col'>
                         <div>
                             <p className='text-[12px] rounded-[10px] leading-[18px] text-white'>Looking to sell or rent</p>
                             <p className='text-[12px] rounded-[10px] leading-[18px] text-white'>your property?</p>

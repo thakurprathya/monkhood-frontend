@@ -5,7 +5,7 @@
 
 @layer utilities {
     .nav-comp{
-        @apply flex flex-col items-center mx-[8.5vw] md:mx-[11vw] sm-350:mx-[7vw] text-gray-500 text-[10px] font-medium leading-[15px] tracking-normal text-center outline-none
+        @apply flex flex-col items-center mx-[8.5vw] md:mx-[11vw] sm-360:mx-[7vw] text-gray-500 text-[10px] font-medium leading-[15px] tracking-normal text-center outline-none
     }
     .selected-nav-comp{
         @apply text-[#F69F17]
