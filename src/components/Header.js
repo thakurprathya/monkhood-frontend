@@ -45,7 +45,7 @@ const Header = ({page, setPage}) => {
                         <button id='pg' className='head-btn' onClick={HandlePageChange}>PG Homes</button>
                     </div>
 
-                    <div className='w-[329px] h-[40px] relative mx-auto flex items-center justify-start text-[12px] rounded-[4px] bg-white py-4 px-3 bg-opacity-20 backdrop-filter backdrop-blur-sm shadow'>
+                    <div className='w-[329px] sm-350:w-[300px] h-[40px] relative mx-auto flex items-center justify-start text-[12px] rounded-[4px] bg-white py-4 px-3 bg-opacity-20 backdrop-filter backdrop-blur-sm shadow'>
                         <div className='flex items-center border-r-2 border-white border-solid'>
                             <LocationIcon/>
                             <div className="inline-block mx-3 text-[#FBFAFA]">
@@ -72,7 +72,7 @@ const Header = ({page, setPage}) => {
 
                         <div className='flex items-center '>
                             <SearchIcon className='mx-3'/>
-                            <input type="text" placeholder='Search by College' className='w-[165px] bg-transparent text-white outline-none placeholder:text-[#ffffff] placeholder:mx-1'/>
+                            <input type="text" placeholder='Search by College' className='w-[165px] sm-350:w-[150px] bg-transparent text-white outline-none placeholder:text-[#ffffff] placeholder:mx-1'/>
                         </div>
                     </div>
                 </div>
