@@ -22,14 +22,21 @@ function App() {
         //asking for user location
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
-                (position) => { setLocation({latitude: position.coords.latitude, longitude: position.coords.longitude}); setLocAccess(true); console.log(location); },
+                (position) => {
+                    const Latitude = position.coords.latitude;
+                    const Longitude = position.coords.longitude;
+                    setLocation({latitude: Latitude, longitude: Longitude});
+                    setLocAccess(true); 
+                },
                 (error) => { console.log(error); }
             );
         } else {
             console.log('Geolocation not supported for browser');
         }
+        // eslint-disable-next-line
     },[])
 
+    console.log(location);
     return (
         <div>
             <Navbar />
