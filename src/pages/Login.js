@@ -1,23 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import {isValidPhoneNumber} from 'react-phone-number-input';
 import PhoneInput2 from 'react-phone-input-2';
-import OtpInput from 'react-otp-input';
 import 'react-phone-input-2/lib/bootstrap.css';
 
 import loginBG from '../assets/loginBG.png';
 import { ReactComponent as BackArrow } from "../assets/backArrow.svg";
 
 const Login = () => {
-    const [comp, setComp] = useState('otp');
+    const [comp, setComp] = useState('login');
     const [signup_name, setSignupName] = useState("");
     const [signup_email, setSignupEmail] = useState("");
     const [signup_phone, setSignupPhone] = useState();
     const [phone, setPhone] = useState();
-    const [otp, setOtp] = useState('');
+    const [otp, setOTP] = useState(["", "", "", "", "", ""]);
+
     const isValidPhone = isValidPhoneNumber(`+${phone}`);  //validating login phone number
     const isValidSignupPhone = isValidPhoneNumber(`+${signup_phone}`);   //validating the signup phone number
     const isValidEmail = signup_email ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(signup_email) : false;  //validating the email
+    const inputRefs = useRef([]);
+
+// OTP BOX Functions
+    const handleInputChange = (index, event) => {
+        const value = event.target.value;
+        if(!isNaN(value)) {
+            const newOTP = [...otp];
+            newOTP[index] = value;
+            setOTP(newOTP);
+            if (index < 5 && value !== ""){ inputRefs.current[index + 1].focus(); }
+        }
+    };
+    const handlePaste = (event) => {
+        event.preventDefault();
+        const pastedData = event.clipboardData.getData("text/plain");
+        const newOTP = [...otp];
+        for (let i = 0; i < pastedData.length && i < 6; i++){
+            const char = pastedData.charAt(i);
+            if(!isNaN(char)){ newOTP[i] = char; }
+        }
+        setOTP(newOTP);
+        inputRefs.current[5].focus();
+    };
+    const handleKeyDown = (event, index) => {
+        if (event.key === "Backspace" && index > 0 && otp[index] === "") {
+            inputRefs.current[index - 1].focus();
+        }
+    };
+    const otpValue = parseInt(otp.join(""), 10);
 
     return (
         <div className='flex flex-col justify-center items-center overflow-hidden'>
@@ -79,10 +108,16 @@ const Login = () => {
                                 <div className='flex flex-col justify-center items-center'>
                                     <p className='mt-[50px] font-lora not-italic font-bold text-[28.4599px] leading-[36px]'>OTP Verification</p>
                                     <p className='not-italic font-normal text-sm leading-[21px] text-[#707070]'>Enter the code sent to your phone number</p>
-                                    <OtpInput value={otp} onChange={setOtp} numInputs={6} containerStyle={{marginTop:'60px'}} inputStyle={{margin:'0 5px 0 5px', width:'45px', height:'45px', boxShadow:'0px 1.87172px 3.74343px rgba(0, 0, 0, 0.1), 0px 4.67929px 14.0379px rgba(0, 0, 0, 0.1)'}} renderInput={(props) => <input {...props} />}/>
+                                    <div className='flex mt-[60px]'>
+                                        {otp.map((digit, index) => (
+                                            <div key={index}>
+                                                <input type="text" maxLength={1} value={digit} ref={(ref) => (inputRefs.current[index] = ref)} onChange={(event) => handleInputChange(index, event)} onPaste={handlePaste} onKeyDown={(event) => handleKeyDown(event, index)} className='inp-num' />
+                                            </div>
+                                        ))}
+                                    </div>
                                     <p className='mt-[60px] not-italic font-normal text-xs leading-[18px] text-[#707070]'>If you haven’t received the OTP code, click below</p>
                                     <button className='mt-[25px] not-italic font-semibold text-base leading-6 text-[#F69F17]'>Resend OTP</button>
-                                    <button className='mt-[44px] mb-[50px] flex justify-center items-center w-[275.96px] h-[29.87px] shadow-[0px_1.87172px_3.74343px_rgba(235,147,9,0.2),0px_4.67929px_14.0379px_rgba(235,147,9,0.15)] px-[29.9475px] py-[14.9737px] rounded-[3.74343px] bg-[#eb9309] disabled:bg-[#f1b048] text-white'><p className='font-semibold text-sm leading-[21px]'>Verify</p></button>
+                                    <button disabled={(otpValue.toString().length < 6)?true:false} className='mt-[44px] mb-[50px] flex justify-center items-center w-[275.96px] h-[29.87px] shadow-[0px_1.87172px_3.74343px_rgba(235,147,9,0.2),0px_4.67929px_14.0379px_rgba(235,147,9,0.15)] px-[29.9475px] py-[14.9737px] rounded-[3.74343px] bg-[#eb9309] disabled:bg-[#f1b048] text-white'><p className='font-semibold text-sm leading-[21px]'>Verify</p></button>
                                 </div>  
                             </>
                     }

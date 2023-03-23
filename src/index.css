@@ -32,5 +32,7 @@
     .selected-fav-btn{
         @apply stroke-[#F69F17] fill-[#F69F17]
     }
+    .inp-num{
+        @apply  mx-1 text-center w-[47px] h-[47px] shadow-[0px_1.87172px_3.74343px_rgba(0,0,0,0.1),0px_4.67929px_14.0379px_rgba(0,0,0,0.1)] rounded-[3.74343px]
+    }
 }
-
