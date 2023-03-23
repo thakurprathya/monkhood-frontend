@@ -9,7 +9,7 @@ import loginBG from '../assets/loginBG.png';
 import { ReactComponent as BackArrow } from "../assets/backArrow.svg";
 
 const Login = () => {
-    const [comp, setComp] = useState('signUp');
+    const [comp, setComp] = useState('otp');
     const [signup_name, setSignupName] = useState("");
     const [signup_email, setSignupEmail] = useState("");
     const [signup_phone, setSignupPhone] = useState();
@@ -79,8 +79,8 @@ const Login = () => {
                                 <div className='flex flex-col justify-center items-center'>
                                     <p className='mt-[50px] font-lora not-italic font-bold text-[28.4599px] leading-[36px]'>OTP Verification</p>
                                     <p className='not-italic font-normal text-sm leading-[21px] text-[#707070]'>Enter the code sent to your phone number</p>
-                                    <OtpInput value={otp} onChange={setOtp} numInputs={4} containerStyle={{marginTop:'68px'}} inputStyle={{margin:'0 12.5px 0 12.5px', width:'57px', height:'57px', boxShadow:'0px 1.87172px 3.74343px rgba(0, 0, 0, 0.1), 0px 4.67929px 14.0379px rgba(0, 0, 0, 0.1)'}} renderInput={(props) => <input {...props} />}/>
-                                    <p className='mt-[70px] not-italic font-normal text-xs leading-[18px] text-[#707070]'>If you haven’t received the OTP code, click below</p>
+                                    <OtpInput value={otp} onChange={setOtp} numInputs={6} containerStyle={{marginTop:'60px'}} inputStyle={{margin:'0 5px 0 5px', width:'45px', height:'45px', boxShadow:'0px 1.87172px 3.74343px rgba(0, 0, 0, 0.1), 0px 4.67929px 14.0379px rgba(0, 0, 0, 0.1)'}} renderInput={(props) => <input {...props} />}/>
+                                    <p className='mt-[60px] not-italic font-normal text-xs leading-[18px] text-[#707070]'>If you haven’t received the OTP code, click below</p>
                                     <button className='mt-[25px] not-italic font-semibold text-base leading-6 text-[#F69F17]'>Resend OTP</button>
                                     <button className='mt-[44px] mb-[50px] flex justify-center items-center w-[275.96px] h-[29.87px] shadow-[0px_1.87172px_3.74343px_rgba(235,147,9,0.2),0px_4.67929px_14.0379px_rgba(235,147,9,0.15)] px-[29.9475px] py-[14.9737px] rounded-[3.74343px] bg-[#eb9309] disabled:bg-[#f1b048] text-white'><p className='font-semibold text-sm leading-[21px]'>Verify</p></button>
                                 </div>  
