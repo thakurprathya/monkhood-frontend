@@ -8,6 +8,7 @@ import Collection from "./components/Collection";
 import Testimonial from "./components/Testimonial";
 import Footer from "./components/Footer";
 import TopSearch from "./components/TopSearch";
+import Login from "./pages/Login";
 
 function App() {
     const [page, setPage] = useState('flat');
@@ -39,14 +40,15 @@ function App() {
     console.log(location);
     return (
         <div>
-            <Navbar />
+            <Login/>
+            {/* <Navbar />
             <Header page={page} setPage={setPage} />
             <Services />
             {locAccess ? <TopSearch/> : ""}
             <Features />
             <Collection page={page} />
             <Testimonial />
-            <Footer/>
+            <Footer/> */}
         </div>
     );
 }
