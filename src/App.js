@@ -11,6 +11,7 @@ import TopSearch from "./components/TopSearch";
 import Login from "./pages/Login";
 
 function App() {
+    const [User, setUser] = useState(null);
     const [page, setPage] = useState('flat');
     const [location, setLocation] = useState({latitude: null, longitude: null});
     const [locAccess, setLocAccess] = useState(false);
@@ -40,15 +41,20 @@ function App() {
     console.log(location);
     return (
         <div>
-            <Login/>
-            {/* <Navbar />
-            <Header page={page} setPage={setPage} />
-            <Services />
-            {locAccess ? <TopSearch/> : ""}
-            <Features />
-            <Collection page={page} />
-            <Testimonial />
-            <Footer/> */}
+            {!User ?
+                <Login setUser={setUser}/>
+            :
+                <div>
+                    <Navbar />
+                    <Header page={page} setPage={setPage} />
+                    <Services />
+                    {locAccess ? <TopSearch/> : ""}
+                    <Features />
+                    <Collection page={page} />
+                    <Testimonial />
+                    <Footer/>
+                </div>
+            }
         </div>
     );
 }
