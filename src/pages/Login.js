@@ -56,11 +56,16 @@ const Login = (props) => {
 
 // Firebase connectivity functions
     const generateReCaptcha = (id) =>{
-        window.recaptchaVerifier = new RecaptchaVerifier(id, {
-            'size': 'invisible',
-            'callback': (response) => {},
-            'expired-callback': () => { alert("reCAPTCHA expired, Try Again!!!"); generateReCaptcha(id); }
-        }, auth);
+        try {
+            window.recaptchaVerifier = new RecaptchaVerifier(id, {
+                'size': 'invisible',
+                'callback': (response) => {},
+                'expired-callback': () => { alert("reCAPTCHA expired, Try Again!!!"); }
+            }, auth);
+        } catch (error) {
+            alert(error.message);
+            window.location.reload();
+        }
     }
     const handleLogin = () => {
         db.collection('users').where("Phone", "==", `+${phone}`).get()
@@ -139,7 +144,6 @@ const Login = (props) => {
                         Already have an account?
                         <p onClick={()=>setComp('login')} className='text-[#eb9309] mx-1 cursor-pointer'>Log in</p>
                     </div>
-                    {/* <div id="recaptchaDiv1"></div> */}
                 </div>
             :
                 <div className='flex flex-col justify-center items-center absolute top-[320px] min-w-[100vw] min-h-[70vh] bg-white shadow-[0px_4px_30px_black] rounded-[40px_40px_0px_0px]'>
@@ -166,7 +170,6 @@ const Login = (props) => {
                                             of Monkhood Living.
                                         </div>
                                     </div>
-                                    {/* <div id="recaptchDiv2"></div> */}
                                 </div>
                             </>   
                         : 
@@ -186,7 +189,6 @@ const Login = (props) => {
                                     <button id='resend-btn' onClick={HandleResend} className='mt-[25px] not-italic font-semibold text-base leading-6 text-[#eb9309] disabled:text-[#f1b048]'>Resend OTP</button>
                                     <button id='otp-btn' onClick={HandleOtpVerif} disabled={(otpValue.toString().length < 6)?true:false} className='mt-[44px] mb-[50px] flex justify-center items-center w-[275.96px] h-[29.87px] shadow-[0px_1.87172px_3.74343px_rgba(235,147,9,0.2),0px_4.67929px_14.0379px_rgba(235,147,9,0.15)] px-[29.9475px] py-[14.9737px] rounded-[3.74343px] bg-[#eb9309] disabled:bg-[#f1b048] text-white'><p className='font-semibold text-sm leading-[21px]'>Verify</p></button>
                                 </div> 
-                                {/* <div id='recaptchDiv3'></div>  */}
                             </>
                     }
                 </div>
