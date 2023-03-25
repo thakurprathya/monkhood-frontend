@@ -99,6 +99,7 @@ const Login = (props) => {
             console.log('OTP sent'); 
             setComp('verif'); 
             db.collection('users').add({ Name: signup_name, Email: signup_email, Phone: `+${signup_phone}` });
+            props.setOnBoard(true);
         })
         .catch((error) => { console.log(error); });
     }
@@ -120,7 +121,6 @@ const Login = (props) => {
         .catch((error) => { console.log(error); });
     }
     const HandleDone = () =>{
-        props.setOnBoard(true);
         props.setUser(verif);
         setComp('login');
     }
