@@ -35,4 +35,10 @@
     .inp-num{
         @apply  mx-1 text-center w-[47px] h-[47px] shadow-[0px_1.87172px_3.74343px_rgba(0,0,0,0.1),0px_4.67929px_14.0379px_rgba(0,0,0,0.1)] rounded-[3.74343px]
     }
+    .board-btn{
+        @apply mx-2 w-[26px] h-2 rounded-[5px] bg-[#F69F17]
+    }
+    .board-btn-disabled{
+        @apply mx-2 w-2 h-2 rounded-[5px] bg-[#cdcccc]
+    }
 }

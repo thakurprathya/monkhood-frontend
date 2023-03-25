@@ -1,20 +1,14 @@
 import { useState, useEffect } from "react";
 
-import Navbar from "./components/Navbar";
-import Header from "./components/Header";
-import Services from "./components/Services";
-import Features from "./components/Features";
-import Collection from "./components/Collection";
-import Testimonial from "./components/Testimonial";
-import Footer from "./components/Footer";
-import TopSearch from "./components/TopSearch";
 import Login from "./pages/Login";
+import Main from "./pages/Main";
+import OnBoarding from "./pages/OnBoarding";
 
 function App() {
     const [User, setUser] = useState(null);
-    const [page, setPage] = useState('flat');
     const [location, setLocation] = useState({latitude: null, longitude: null});
     const [locAccess, setLocAccess] = useState(false);
+    const [onBoard, setOnBoard] = useState(false);
 
     useEffect(()=>{
         document.body.classList.add('bg-[#f5f5f5]');
@@ -42,18 +36,15 @@ function App() {
     return (
         <div>
             {!User ?
-                <Login setUser={setUser}/>
+                <Login setUser={setUser} setOnBoard={setOnBoard} />
             :
-                <div>
-                    <Navbar />
-                    <Header page={page} setPage={setPage} />
-                    <Services />
-                    {locAccess ? <TopSearch/> : ""}
-                    <Features />
-                    <Collection page={page} />
-                    <Testimonial />
-                    <Footer/>
-                </div>
+                <>
+                    {onBoard ?
+                        <OnBoarding setOnBoard={setOnBoard} />
+                    :
+                        <Main locAccess={locAccess} />
+                    }
+                </>
             }
         </div>
     );
