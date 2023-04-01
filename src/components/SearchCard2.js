@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as FavIcon } from '../assets/saved-small-gray.svg';
 import { ReactComponent as LocationIcon } from '../assets/location-black.svg';
 import { ReactComponent as RatingStar } from '../assets/ratingStar.svg';
 import { ReactComponent as BedIcon } from '../assets/bed.svg';
 
-const SearchCard2 = ({name, location, rating, rent, img, card, roomCount}) => {
+const SearchCard2 = ({name, location, rating, rent, img, id, roomCount}) => {
+    const navigate = useNavigate();
+    const [onSaveBtn, setOnSaveBtn] = useState(false);
+
     const HandleSaved = (event)=>{
         const btn = document.querySelector(`#${event.target.closest('button').id} > svg > path`);
         if(btn.classList.contains('selected-fav-btn')){ btn.classList.remove('selected-fav-btn'); }
         else{ btn.classList.add('selected-fav-btn'); }
     }
+    const HandleListing = ()=>{
+        if(!onSaveBtn){ navigate(`/listing/${id}`); }
+    }
 
     return (
-        <div className='my-2 flex items-center justify-start w-[326px] h-20 shadow-[1.35417px_1.78208px_5.34625px_rgba(0,0,0,0.1),-1.35417px_1.08333px_67.7083px_-10.8333px_rgba(0,0,0,0.05)] rounded-[10px] bg-[#fbfafa]'>
+        <div onClick={HandleListing} className='my-2 flex items-center justify-start w-[326px] h-20 shadow-[1.35417px_1.78208px_5.34625px_rgba(0,0,0,0.1),-1.35417px_1.08333px_67.7083px_-10.8333px_rgba(0,0,0,0.05)] rounded-[10px] bg-[#fbfafa] cursor-pointer'>
             <div className='mx-2 my-2 w-[85px] h-[66px]'>{img}</div>
             <div className='mx-0 my-2 flex flex-col justify-center items-center'>
                 <div className='flex items-center'>
@@ -37,7 +44,7 @@ const SearchCard2 = ({name, location, rating, rent, img, card, roomCount}) => {
                         <BedIcon />
                         <p className='mx-1 not-italic font-medium text-[8px] leading-3 text-[#808385]'>{roomCount} bedrooms</p>
                     </div>
-                    <button className='w-[16px] h-[16px] rounded-[23px] bg-[#f2f2f2] flex items-center justify-center shadow-[1.35417px_1.78208px_5px_rgba(0,0,0,0.15),-1.35417px_1.08333px_67.7083px_-10.8333px_rgba(0,0,0,0.15)]' id={`fav2-btn`+card} onClick={HandleSaved}>{<FavIcon />}</button>
+                    <button className='w-[16px] h-[16px] rounded-[23px] bg-[#f2f2f2] flex items-center justify-center shadow-[1.35417px_1.78208px_5px_rgba(0,0,0,0.15),-1.35417px_1.08333px_67.7083px_-10.8333px_rgba(0,0,0,0.15)]' id={`fav2-btn`+id} onClick={HandleSaved} onMouseEnter={()=>setOnSaveBtn(true)} onMouseLeave={()=>setOnSaveBtn(false)}>{<FavIcon />}</button>
                 </div>
             </div>
         </div>

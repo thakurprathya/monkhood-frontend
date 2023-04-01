@@ -26,17 +26,17 @@ const TopSearch = ({locAccess}) => {
                     <p className='mb-5 w-[196px] h-[19px] font-medium text-sm leading-[21px] text-center text-black'>Discover nearby properties</p>
         
                     <div className='grid grid-cols-2 gap-5'>
-                        <SearchCard1 name="Devta Homes" rating={4.5} location="Rohini" rent={5000} card="1" img={<img src={room1} alt="room-img"/>} />
-                        <SearchCard1 name="Nature's Nest" rating={3.9} location="Kamla Nagar" rent={8000} card="2" img={<img src={room2} alt="room-img" />} />
+                        <SearchCard1 name="Devta Homes" rating={4.5} location="Rohini" rent={5000} id="1" img={<img src={room1} alt="room-img"/>} />
+                        <SearchCard1 name="Nature's Nest" rating={3.9} location="Kamla Nagar" rent={8000} id="2" img={<img src={room2} alt="room-img" />} />
                     </div>
         
                     <p className='mt-5 mb-5 w-[196px] h-[19px] font-medium text-sm leading-[21px] text-center text-black'>Top searches</p>
         
                     <div className='flex flex-col items-center justify-center'>
-                        <SearchCard2 name="Devta Homes" rating={4.5} location="Rohini" rent={5000} card="1" roomCount={2} img={<img src={room1} alt="room-img"/>} />
-                        <SearchCard2 name="Nature's Nest" rating={3.9} location="Kamla Nagar" rent={8000} card="2" roomCount={2} img={<img src={room2} alt="room-img" />} />
-                        <SearchCard2 name="Devta Homes" rating={4.5} location="Rohini" rent={5000} card="3" roomCount={2} img={<img src={room1} alt="room-img"/>} />
-                        <SearchCard2 name="Nature's Nest" rating={3.9} location="Kamla Nagar" rent={8000} card="4" roomCount={2} img={<img src={room2} alt="room-img" />} />
+                        <SearchCard2 name="Devta Homes" rating={4.5} location="Rohini" rent={5000} id="1" roomCount={2} img={<img src={room1} alt="room-img"/>} />
+                        <SearchCard2 name="Nature's Nest" rating={3.9} location="Kamla Nagar" rent={8000} id="2" roomCount={2} img={<img src={room2} alt="room-img" />} />
+                        <SearchCard2 name="Devta Homes" rating={4.5} location="Rohini" rent={5000} id="3" roomCount={2} img={<img src={room1} alt="room-img"/>} />
+                        <SearchCard2 name="Nature's Nest" rating={3.9} location="Kamla Nagar" rent={8000} id="4" roomCount={2} img={<img src={room2} alt="room-img" />} />
                     </div>
         
                     <button onClick={HandleClick} id='all-btn2' className='my-2 w-[76px] h-[26px] flex justify-center items-center border rounded-lg border-solid border-[#F69F17]'>

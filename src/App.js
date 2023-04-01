@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Main from "./pages/Main";
 import OnBoarding from "./pages/OnBoarding";
+import Listing from "./pages/Listing";
 
 function App() {
-    const [User, setUser] = useState(null);
+    const [User, setUser] = useState({});
     const [location, setLocation] = useState({latitude: null, longitude: null});
-    const [locAccess, setLocAccess] = useState(false);
+    const [locAccess, setLocAccess] = useState(true);
     const [onBoard, setOnBoard] = useState(false);
 
     useEffect(()=>{
@@ -34,7 +36,7 @@ function App() {
 
     console.log(location);
     return (
-        <div>
+        <Router>
             {!User ?
                 <Login setUser={setUser} setOnBoard={setOnBoard} />
             :
@@ -42,11 +44,14 @@ function App() {
                     {onBoard ?
                         <OnBoarding setOnBoard={setOnBoard} />
                     :
-                        <Main locAccess={locAccess} />
+                        <Routes>
+                            <Route path='/' element={<Main locAccess={locAccess} />} />
+                            <Route path='/listing/:id' element={<Listing />} />
+                        </Routes>
                     }
                 </>
             }
-        </div>
+        </Router>
     );
 }
 

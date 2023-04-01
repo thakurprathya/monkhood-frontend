@@ -82,7 +82,7 @@ const Login = (props) => {
                 signInWithPhoneNumber(auth, `+${phone}`, appVerifier)
                 .then((confirmationResult) => {
                     window.confirmationResult = confirmationResult;
-                    console.log('OTP sent'); 
+                    // console.log('OTP sent'); 
                     setComp('verif'); 
                 })
                 .catch((error) => { console.log(error); });
@@ -96,7 +96,7 @@ const Login = (props) => {
         signInWithPhoneNumber(auth, `+${signup_phone}`, appVerifier)
         .then((confirmationResult) => {
             window.confirmationResult = confirmationResult;
-            console.log('OTP sent'); 
+            // console.log('OTP sent'); 
             setComp('verif'); 
             db.collection('users').add({ Name: signup_name, Email: signup_email, Phone: `+${signup_phone}` });
             props.setOnBoard(true);
@@ -116,7 +116,7 @@ const Login = (props) => {
         signInWithPhoneNumber(auth, num, appVerifier)
         .then((confirmationResult) => {
             window.confirmationResult = confirmationResult;
-            console.log('New OTP sent'); 
+            // console.log('New OTP sent'); 
         })
         .catch((error) => { console.log(error); });
     }
