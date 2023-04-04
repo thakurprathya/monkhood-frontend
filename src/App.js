@@ -7,9 +7,9 @@ import OnBoarding from "./pages/OnBoarding";
 import Listing from "./pages/Listing";
 
 function App() {
-    const [User, setUser] = useState({});
+    const [User, setUser] = useState(null);
     const [location, setLocation] = useState({latitude: null, longitude: null});
-    const [locAccess, setLocAccess] = useState(true);
+    const [locAccess, setLocAccess] = useState(false);
     const [onBoard, setOnBoard] = useState(false);
 
     useEffect(()=>{

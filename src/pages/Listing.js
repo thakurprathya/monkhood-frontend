@@ -40,7 +40,7 @@ import { ReactComponent as FormAvatarIcon } from '../assets/formAvatar.svg';
 
 const DiscriptionCard = ({icon, content}) =>{
     return (
-        <div className='mx-[7.5px] w-[94px] h-[38px] flex items-center justify-center border rounded-[6.47059px] border-solid border-[#DEDEDE] bg-white'>
+        <div className='mx-[7.5px] sm-360:mx-[5px] w-[94px] h-[38px] flex items-center justify-center border rounded-[6.47059px] border-solid border-[#DEDEDE] bg-white'>
             <div>{icon}</div>
             <p className='mx-2 not-italic font-medium text-[10px] leading-[15px] text-[#767676]'>{content}</p>
         </div>
@@ -48,8 +48,8 @@ const DiscriptionCard = ({icon, content}) =>{
 }
 const MapComponent = () =>{
     return (
-        <div className='mt-[19px] relative'>
-            <Map/>
+        <div className='mt-[19px] sm-360:mt-[12px] relative'>
+            <Map className='sm-360:w-[310px]'/>
             <div className='absolute flex items-center top-[10.31px] left-[32px]'>
                 <div className='flex items-center justify-center w-[178px] h-5 shadow-[0px_-0.30373px_3.34103px_-1.21492px_rgba(0,0,0,0.2),1.51865px_1.99854px_5.99563px_rgba(0,0,0,0.1)] rounded-[4.55595px] bg-white'>
                     <LocationIcon className='w-[7px] h-2'/>
@@ -75,10 +75,12 @@ const ListingAccordion = ({icon, head, set1, set2}) =>{
 
     return (
         <div className='mb-2'>
-            <button onClick={HandleClick} className='w-[342px] h-[32px] sm-360:w-[300px] px-3 flex items-center rounded-[10px] bg-white'>
-                <p className='font-normal text-[12px] leading-[18px] text-[#161616]'>{icon}</p>
-                <p className='ml-[17px] w-[205px] text-left font-normal text-[12px] leading-[18px] text-[#161616]'>{head}</p>
-                <DownArrowIcon className='ml-[63px]'/>
+            <button onClick={HandleClick} className='w-[342px] h-[32px] sm-360:w-[300px] px-3 flex items-center justify-between rounded-[10px] bg-white'>
+                <div className='flex items-center'>
+                    <p className='font-normal text-[12px] leading-[18px] text-[#161616]'>{icon}</p>
+                    <p className='ml-[17px] w-[205px] text-left font-normal text-[12px] leading-[18px] text-[#161616]'>{head}</p>
+                </div>
+                <DownArrowIcon/>
             </button>
             {state?
                 <div className='w-[342px] sm-360:w-[300px] py-2 px-4 bg-white rounded-[10px] border-[0.5px] border-solid border-[#f9f8f8]'>
@@ -121,6 +123,9 @@ const Listing = () => {
     const { id } = useParams();
     const [image, setImage] = useState('img1');
     const [props, setProps] = useState('commute');
+    const [formName, setFormName] = useState("");
+    const [formEmail, setFormEmail] = useState("");
+    const [formMobile, setFormMobile] = useState("");
 
     const HandleSaved = (event)=>{
         const btn = document.querySelector(`#${event.target.closest('svg').id} > path`);
@@ -137,9 +142,21 @@ const Listing = () => {
             document.querySelector('#show-more-btn > svg > path').classList.remove('stroke-white');
         }, 1500);
     }
+    const HandleFormSubmit = (e)=>{
+        e.preventDefault();
+    }
 
     return (
         <div className='bg-[#FBFAFA]'>
+            {/* Navbar */}
+            <div className='bg-[#ffffff] flex items-center justify-between p-2 fixed z-20 w-full bottom-0 shadow-[0px_4px_16px_rgba(0,0,0,0.1)] rounded-[15px_15px_0px_0px]'>
+                <div className='ml-[25px] sm-360:ml-[10px] flex flex-col justif-center'>
+                    <p className='not-italic font-medium text-[23.4px] leading-[35px] text-center text-black'>₹5000</p>
+                    <p className='not-italic font-normal text-xs leading-[18px] tracking-[0.03em] text-[#808385]'>PER MONTH</p>
+                </div>
+                <button className='mr-[25px] sm-360:mr-[10px] w-[171px] h-[41px] rounded-[15px] bg-[#F69F17]'> <p className='not-italic font-semibold text-base leading-6 text-center text-white'>Schedule Visit</p> </button>
+            </div>
+
             {/* Header */}
             <div className='relative'>
                 <img src={flat} alt="head_img" className='min-w-[100vw] h-[267px]'/>
@@ -166,12 +183,12 @@ const Listing = () => {
             <div className='mt-[19px] flex flex-col justify-center items-center'>
                 <div className='flex items-center'>
                     <p className='not-italic font-medium text-sm leading-[21px]'>Devta Homes</p>
-                    <div className='ml-[186px] flex items-center justify-center w-[51.18px] h-[20.71px] shadow-[0px_4.87396px_17.0589px_rgba(0,0,0,0.05)] rounded-[6.09245px] bg-white'>
+                    <div className='ml-[186px] sm-360:ml-[150px] flex items-center justify-center w-[51.18px] h-[20.71px] shadow-[0px_4.87396px_17.0589px_rgba(0,0,0,0.05)] rounded-[6.09245px] bg-white'>
                         <RatingStar className='w-[13.26px] h-[13.52px]'/>
                         <p className='mx-1 not-italic font-medium text-[14.6219px] leading-[22px]'>4.5</p>
                     </div>
                 </div>
-                <div className='mt-[12px] mr-[228px] flex items-center'>
+                <div className='mt-[12px] mr-[228px] sm-360:mr-[200px] flex items-center'>
                     <LocationIcon />
                     <p className='mx-1 not-italic font-normal text-[11px] leading-4 text-[#808385]'>Sector 17, Rohini</p>
                 </div>
@@ -182,13 +199,13 @@ const Listing = () => {
                 </div>
                 <div className='mt-[20px]'>
                     <p className='not-italic font-medium text-sm leading-[21px]'>Description</p>
-                    <p className='mt-[19px] w-[330px] not-italic font-normal text-[11px] leading-4 text-[#808385]'>This fully furnished 2 BHK is available for rent in Rohini with space for car and bike parking. This home is 1,250 sqft & is situated on the 3rd floor of the building.</p>
+                    <p className='mt-[19px] w-[330px] sm-360:w-[300px] not-italic font-normal text-[11px] leading-4 text-[#808385]'>This fully furnished 2 BHK is available for rent in Rohini with space for car and bike parking. This home is 1,250 sqft & is situated on the 3rd floor of the building.</p>
                 </div>
             </div>
 
             {/* Details */}
             <div className='mt-[25px] flex flex-col justify-center items-center'>
-                <p className='mr-[281px] not-italic font-medium text-sm leading-[21px]'>Details</p>
+                <p className='mr-[281px] sm-360:mr-[252px] not-italic font-medium text-sm leading-[21px]'>Details</p>
                 <div className='mt-[19px] flex'>
                     <div>
                         <p className='not-italic font-normal text-[11px] leading-4 text-[#808385]'>Carpet Area</p>
@@ -200,7 +217,7 @@ const Listing = () => {
                         <p className='mt-[15px] not-italic font-normal text-[11px] leading-4 text-[#808385]'>Security Deposit</p>
                         <p className='not-italic font-normal text-[11px] leading-4'>10,000</p>
                     </div>
-                    <div className='ml-[126px]'>
+                    <div className='ml-[126px] sm-360:ml-[100px]'>
                         <p className='not-italic font-normal text-[11px] leading-4 text-[#808385]'>Parking</p>
                         <p className='not-italic font-normal text-[11px] leading-4'>2-wheeler</p>
                         <p className='mt-[15px] not-italic font-normal text-[11px] leading-4 text-[#808385]'>Furnishing</p>
@@ -215,13 +232,13 @@ const Listing = () => {
 
             {/* Amenities */}
             <div className='mt-[27px] flex flex-col justify-center items-center'>
-                <p className='mr-[255px] not-italic font-medium text-sm leading-[21px]'>Amenities</p>
+                <p className='mr-[255px] sm-360:mr-[225px] not-italic font-medium text-sm leading-[21px]'>Amenities</p>
                 <div className='mt-[19px] flex items-center'>
-                    <div className='mx-[16.5px] flex items-center justify-center w-10 h-10 rounded-[10px] bg-[#fff2e8]'><WifiIcon /></div>
-                    <div className='mx-[16.5px] flex items-center justify-center w-10 h-10 rounded-[10px] bg-[#fff2e8]'><ACIcon /></div>
-                    <div className='mx-[16.5px] flex items-center justify-center w-10 h-10 rounded-[10px] bg-[#fff2e8]'><FridgeIcon /></div>
-                    <div className='mx-[16.5px] flex items-center justify-center w-10 h-10 rounded-[10px] bg-[#fff2e8]'><ScooterIcon /></div>
-                    <div className='mx-[16.5px] flex items-center justify-center w-10 h-10 rounded-[10px] bg-[#fff2e8]'><FilterIcon /></div>
+                    <div className='mx-[16.5px] sm-360:mx-[12px] flex items-center justify-center w-10 h-10 rounded-[10px] bg-[#fff2e8]'><WifiIcon /></div>
+                    <div className='mx-[16.5px] sm-360:mx-[12px] flex items-center justify-center w-10 h-10 rounded-[10px] bg-[#fff2e8]'><ACIcon /></div>
+                    <div className='mx-[16.5px] sm-360:mx-[12px] flex items-center justify-center w-10 h-10 rounded-[10px] bg-[#fff2e8]'><FridgeIcon /></div>
+                    <div className='mx-[16.5px] sm-360:mx-[12px] flex items-center justify-center w-10 h-10 rounded-[10px] bg-[#fff2e8]'><ScooterIcon /></div>
+                    <div className='mx-[16.5px] sm-360:mx-[12px] flex items-center justify-center w-10 h-10 rounded-[10px] bg-[#fff2e8]'><FilterIcon /></div>
                 </div>
                 <button onClick={HandleClick} id='show-more-btn' className='mt-[33px] flex items-center justify-center w-[93px] h-[26px] border rounded-lg border-solid border-[#F69F17] bg-white'>
                     <p id='show-more-btn-p' className='not-italic font-medium text-[10px] leading-[15px] text-[#F69F17]'>Show more</p>
@@ -231,7 +248,7 @@ const Listing = () => {
 
             {/* Neighbourhood */}
             <div className='mt-[25px] flex flex-col justify-center items-center'>
-                <p className='mr-[163px] not-italic font-medium text-sm leading-[21px]'>Explore Neighbourhood</p>
+                <p className='mr-[163px] sm-360:mr-[130px] not-italic font-medium text-sm leading-[21px]'>Explore Neighbourhood</p>
                 <MapComponent />
                 <div className='mt-[10px] flex items-center'>
                     <div className='flex flex-col items-center'>
@@ -281,7 +298,7 @@ const Listing = () => {
 
             {/* Reviews */}
             <div className='mt-[10px] flex flex-col justify-center items-center'>
-                <p className='mr-[195px] not-italic font-medium text-sm leading-[21px]'>Reviews & Ratings</p>
+                <p className='mr-[195px] sm-360:mr-[170px] not-italic font-medium text-sm leading-[21px]'>Reviews & Ratings</p>
                 <div className='mt-[10px] flex items-center'>
                     <div className='flex flex-col items-center'>
                         <p className='not-italic font-medium text-5xl leading-[72px]'>3.8</p>
@@ -296,30 +313,44 @@ const Listing = () => {
                     </div>
                     <img src={ratingBars} alt="ratings" className='w-[190px] ml-[51px]'/>
                 </div>
-                <div className='mt-[25px] w-[393px] flex items-center overflow-scroll'>
+                <div className='mt-[25px] w-[393px] sm-360:w-[320px] flex items-center overflow-scroll'>
                     <Review />
                     <Review />
                     <Review />
                 </div>
-                <button className='mt-[19px] w-[342px] h-8 rounded-lg bg-[#F69F17]'> <p className='not-italic font-semibold text-xs leading-[18px] text-center text-white'>Review this property</p> </button>
+                <button className='mt-[19px] w-[342px] sm-360:w-[300px] h-8 rounded-lg bg-[#F69F17]'> <p className='not-italic font-semibold text-xs leading-[18px] text-center text-white'>Review this property</p> </button>
             </div>
 
             {/* Footer */}
             <div className='mt-[25px] flex flex-col justify-center items-center'>
-                <div className='w-[342px] h-[94px] flex flex-col items-center justify-center border rounded-lg border-solid border-[#D9D9D9] bg-white'>
+                <div className='w-[342px] sm-360:w-[305px] h-[94px] flex flex-col items-center justify-center border rounded-lg border-solid border-[#D9D9D9] bg-white'>
                     <p className='not-italic font-normal text-xs leading-[18px] text-center'>Did you find something wrong with this property?</p>
                     <div className='mt-[17px] flex items-center'>
                         <button className='w-[74px] h-[21px] border rounded-lg border-solid border-[#F69F17] bg-white'><p className='font-normal text-[10px] leading-[15px] text-center text-[#F69F17]'>Yes</p></button>
-                        <button className='ml-[48px] w-[74px] h-[21px] border rounded-lg border-solid border-[#F69F17] bg-[#F69F17]'><p className='font-normal text-[10px] leading-[15px] text-center text-white'>Not really</p></button>
+                        <button className='ml-[48px] sm-360:ml-[20px] w-[74px] h-[21px] border rounded-lg border-solid border-[#F69F17] bg-[#F69F17]'><p className='font-normal text-[10px] leading-[15px] text-center text-white'>Not really</p></button>
                     </div>
                 </div>
-                <p className='mr-[220px] mt-[25px] not-italic font-medium text-sm leading-[21px]'>Contact Owner</p>
-                <div className='mr-[185px] mt-[19px] flex items-center'>
+                <p className='mr-[220px] sm-360:mr-[195px] mt-[25px] not-italic font-medium text-sm leading-[21px]'>Contact Owner</p>
+                <div className='mr-[185px] sm-360:mr-[165px] mt-[19px] flex items-center'>
                     <FormAvatarIcon />
                     <div className='ml-[17px]'>
                         <p className='not-italic font-medium text-[10px] leading-[15px] text-[#181818]'>Abhilash</p>
                         <p className='not-italic font-medium text-[8px] leading-[12px] text-[#787878]'>+91 98xxxxxx09</p>
                     </div>
+                </div>
+                <form onSubmit={HandleFormSubmit} className='flex flex-col items-center'>
+                    <input type="text" required value={formName} onChange={(e)=>setFormName(e.target.value)} placeholder='Enter your name' className='mt-[19px] px-4 w-[342px] sm-360:w-[305px] h-[38px] border rounded-lg border-solid border-[#D1D1D1] not-italic font-normal text-xs leading-[18px] text-[#9F9F9F] focus:outline-none'/>
+                    <input type="email" required value={formEmail} onChange={(e)=>setFormEmail(e.target.value)} placeholder='Enter your email' className='mt-[10px] px-4 w-[342px] sm-360:w-[305px] h-[38px] border rounded-lg border-solid border-[#D1D1D1] not-italic font-normal text-xs leading-[18px] text-[#9F9F9F] focus:outline-none'/>
+                    <input type="number" required value={formMobile} onChange={(e)=>setFormMobile(e.target.value)} placeholder='Enter your mobile no.' className='mt-[10px] px-4 w-[342px] sm-360:w-[305px] h-[38px] border rounded-lg border-solid border-[#D1D1D1] not-italic font-normal text-xs leading-[18px] text-[#9F9F9F] focus:outline-none'/>
+                    <div className='mt-[17px] ml-5 flex items-center'>
+                        <input type="checkbox" className='w-[12px] h-[12px] bg-white border rounded-sm border-solid border-[#969696] cursor-pointer'/>
+                        <p className='mx-[10px] w-[319px] sm-360:w-[290px] not-italic font-normal text-[10px] leading-[15px] text-neutral-600'>I agree to be contacted by Monkhood Living via whatsapp, phone, SMS, e-mail, etc.</p>
+                    </div>
+                    <button type='submit' className='mt-[17px] w-[342px] sm-360:w-[305px] h-8 rounded-lg left-[26px] top-[2161px] bg-[#a5a5a5]'> <p className='not-italic font-semibold text-xs leading-[18px] text-center text-white'>Get Contact Details</p> </button>
+                </form>
+                <div className='mt-[15px] mb-[85px] not-italic font-normal text-[10px] leading-[15px] flex'> 
+                    <p className='text-[#525252]'>By submitting, I accept Monkhood Living</p>
+                    <p className='mx-1 text-[#F59F17] cursor-pointer'>Terms & Conditions</p>
                 </div>
             </div>
         </div>
